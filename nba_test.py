@@ -1,4 +1,3 @@
-from nba_api.stats.endpoints import leaguegamelog
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -10,9 +9,7 @@ This app retrieves a list of nba teams along with game statistics from a specifi
 * **Data source:** [NBA](https://www.nba.com/stats/).
 """)
 
-stuff = leaguegamelog.LeagueGameLog(season='2019-20')
-abcd = stuff.league_game_log.get_dict()
-teams = pd.DataFrame(abcd["data"], columns=abcd["headers"])
+teams = pd.read_csv("2019-20_stats.csv")
 winning_teams = teams[(teams.WL) == "W"]
 losing_teams = teams[(teams.WL) == "L"]
 
